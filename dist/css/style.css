@@ -1313,7 +1313,7 @@ section:not(:first-child) {
   color: #fff;
   overflow: hidden;
 }
-.promotion-template1__bg > img {
+.promotion-template1__bg img {
   position: absolute;
   top: 0;
   left: 0;
