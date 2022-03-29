@@ -1,14 +1,60 @@
 //<BUTTONS (a.btn+tab)>
 // Снипет (HTML): btn
 
-.button {
+.btn {
 	display: inline-flex;
-	padding: 0px 0px;
-	@media (any-hover: hover) {
-		&:hover {
+	align-items: center;
+	justify-content: center;
+	font-weight: 600;
+	@include adaptiveValue("font-size", 18, 16);
+	line-height: math.div(23, 18);
+	letter-spacing: rem(0.72);
+	text-align: center;
+	padding: rem(6) rem(18);
+	min-height: rem(39);
+	border-radius: rem(0) !important;
+	border: 2px solid transparent;
+
+	// .btn_white
+	&_white {
+		background-color: $White;
+		color: #331a00;
+
+		@media (any-hover: hover) {
+			transition: $transition ease all 0s;
+
+			&:hover {
+				background-color: #a70000;
+				box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.25);
+				color: $White;
+			}
 		}
 	}
-	&._fw {
-		width: 100%;
+
+	// .btn_border-white
+	&_border-white {
+		border: 2px solid $White;
+
+		@media (any-hover: hover) {
+			transition: $transition ease color, $transition border-color 0s;
+			&:hover {
+				color: #b4b4b4;
+				border-color: #b4b4b4;
+			}
+		}
+	}
+
+	// .btn_red
+	&_red {
+		background-color: $Red;
+		color: $White;
+
+		@media (any-hover: hover) {
+			transition: $transition ease background-color, $transition box-shadow 0s;
+			&:hover {
+				background-color: #a70000;
+				box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.25);
+			}
+		}
 	}
 }

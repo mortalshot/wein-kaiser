@@ -14,3 +14,40 @@
 		display: block;
 	}
 }
+
+._icon-home:before {
+	content: "\e90b";
+}
+._icon-favorites2:before {
+	content: "\e904";
+}
+._icon-cart:before {
+	content: "\e900";
+}
+._icon-check:before {
+	content: "\e901";
+}
+._icon-close:before {
+	content: "\e902";
+}
+._icon-favorites:before {
+	content: "\e903";
+}
+._icon-filter:before {
+	content: "\e905";
+}
+._icon-login:before {
+	content: "\e906";
+}
+._icon-password-off:before {
+	content: "\e907";
+}
+._icon-password-on:before {
+	content: "\e908";
+}
+._icon-arrow-left:before {
+	content: "\e909";
+}
+._icon-arrow-right:before {
+	content: "\e90a";
+}

@@ -3,7 +3,7 @@
 .rating {
 	display: flex;
 	align-items: flex-end;
-	font-size: 40px;
+	font-size: rem(32);
 	line-height: 0.75;
 	transition: opacity 0.3s ease 0s;
 }
@@ -54,7 +54,9 @@
 	opacity: 0;
 }
 .rating__value {
-	font-size: 50%;
+	font-size: rem(0);
 	line-height: 1;
-	padding: 0px 0px 0px 10px;
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
 }

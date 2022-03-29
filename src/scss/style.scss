@@ -7,29 +7,42 @@
 //&display=swap - добавить при подключении через плагин
 
 // Подключить если есть локальные файлы шрифтов
-//@import "fonts/fonts";
+@import "fonts/fonts";
 
 // Подключение иконочных шрифтов ==============================================================================================================================================================================================================================================================================
 // Подключить если есть файл иконочного шрифта
-//@import "fonts/icons";
+@import "fonts/icons";
 
 // Шрифт по умолчанию ==============================================================================================================================================================================================================================================================================
-$fontFamily: "";
-$fontSize: rem(14); // где 14(px) - размер шрифта по умолчанию из макета
+$fontFamily: "Roboto";
+$fontSecond: "RobotoSlab";
+$fontSize: rem(20); // где 14(px) - размер шрифта по умолчанию из макета
 
 // Основные цвета
 $mainColor: #000; // Цвет шрифта по умолчанию
+$White: #fff;
+$Red: #660000;
+$Red2: #a70000;
+$Red3: #b33535;
+$Line: #e9e9e9;
+
+$scrollTrack: #12202b;
+$scrollThumb: #b9bdc6;
+
+$shadow: 0px 0px 5px rgba(104, 104, 104, 0.25);
+
+$transition: 0.3s;
 
 // НАСТРОЙКИ ===============================================================================================================================================================================================================================================================================================
 // Минимальная ширина страницы
 $minWidth: 320;
 // Ширина полотна (макета)
-$maxWidth: 1920;
+$maxWidth: 1440;
 // Ширина ограничивающего контейнера (0 = нет ограничения)
-$maxWidthContainer: 1170;
+$maxWidthContainer: 1300;
 // Общий отступ у контейнера
 // (30 = по 15px слева и справа, 0 = нет отступа)
-$containerPadding: 30;
+$containerPadding: 40;
 
 // Ширина срабатывания первого брейкпоинта
 $containerWidth: $maxWidthContainer + $containerPadding;
@@ -38,6 +51,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 $pc: em($containerWidth); // ПК, ноутбуки, некоторые планшеты в горизонтальном положении
 $tablet: em(991.98); // Планшеты, некоторые телефоны в горизонтальном положении
 $mobile: em(767.98); // Телефоны L
+$mobileM: em(574.98);
 $mobileSmall: em(479.98); // Телефоны S
 
 // Тип адаптива:
@@ -56,6 +70,9 @@ body {
 	}
 	// Сайт загружен
 	.loaded & {
+		.wrapper {
+			opacity: 1;
+		}
 	}
 }
 // Оболочка ============================================================================================================================================================================================================================================================================================================================================================================================================================================
@@ -64,9 +81,20 @@ body {
 	display: flex;
 	flex-direction: column;
 	overflow: hidden;
+	opacity: 0;
+	transition: 0.5s ease opacity 0s;
+
+	@media (max-width: $mobile) {
+		padding-bottom: rem(54);
+	}
+
 	// Прижимаем footer
 	> main {
 		flex: 1 1 auto;
+
+		@media (max-width: $mobile) {
+			padding-top: rem(62);
+		}
 	}
 	// Фикс для слайдеров
 	> * {
@@ -81,42 +109,12 @@ body {
 Например header__container, main__container и т.д.
 Снипет (HTML): cnt
 */
-@if ($responsiveType==1) {
-	// Отзывчивая
-	[class*="__container"] {
-		@if ($maxWidthContainer>0) {
-			max-width: rem($maxWidthContainer);
-			box-sizing: content-box;
-			margin: 0 auto;
-		}
-		@if ($containerPadding>0) {
-			padding: 0 rem(math.div($containerPadding, 2));
-		}
-	}
-} @else {
-	// По брейк-поинтам
-	[class*="__container"] {
+[class*="__container"] {
+	@if ($maxWidthContainer>0) {
+		max-width: rem($maxWidthContainer);
+		box-sizing: content-box;
 		margin: 0 auto;
-		@if ($maxWidthContainer>0) {
-			max-width: rem($maxWidthContainer);
-			box-sizing: content-box;
-		} @else {
-			@if ($containerPadding>0) {
-				padding: 0 rem(math.div($containerPadding, 2));
-			}
-		}
-		@media (max-width: $pc) {
-			max-width: rem(970);
-		}
-		@media (max-width: $tablet) {
-			max-width: rem(750);
-		}
-		@media (max-width: $mobile) {
-			max-width: none;
-			@if ($containerPadding>0 and $maxWidthContainer>0) {
-				padding: 0 rem(math.div($containerPadding, 2));
-			}
-		}
+		@extend %container;
 	}
 }
 

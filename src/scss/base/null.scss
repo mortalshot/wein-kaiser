@@ -22,10 +22,10 @@ body {
 	min-width: $minWidth + px;
 }
 body {
-	color: $mainColor;
-	line-height: 1;
 	font-family: $fontFamily;
-	font-size: $fontSize;
+	@include adaptiveValue("font-size", 20, 16);
+	line-height: math.div(25, 20);
+	color: $mainColor;
 	//text-rendering: optimizeLegibility;
 	-ms-text-size-adjust: 100%;
 	-moz-text-size-adjust: 100%;
